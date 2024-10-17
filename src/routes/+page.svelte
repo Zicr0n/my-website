@@ -2,7 +2,7 @@
 <main>
 	<div>
   
-	  <h1> SMamirrrr</h1>
+	  <h1> Yasir är väldigt trevlig</h1>
 	  <h2>Här har jag samlat min uppgifter jag gjort i samband med webbutveckling i årskurs 2 på Maja Beskowgymnasiet!</h2>
 	  <h3>Inspirerade citat för min webbutvecklingsresa:</h3>
 	  <h7>I HATE TREES!!!</h7>
