@@ -96,7 +96,7 @@
 		rotate: y 180deg;
 	}
 	#diamond-holder img:hover{
-		scale: 1.2;
+		scale: 1.21;
 	}
 
 	span{
