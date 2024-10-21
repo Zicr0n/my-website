@@ -1,3 +1,24 @@
+<nav>
+	<a href="{base}/">Home</a>
+	<a href="{base}/photoapp">Photo App</a>
+	<a href="{base}/about">About</a>
+
+	
+
+</nav>
+
+<style>
+	nav{
+		display: flex;
+		justify-content: center;
+	}
+	a{
+		padding: 20px 30px 30px 30px;
+		color: #ff0066;
+		font-family: 'Courier New', Courier, monospace;
+	}
+</style>
+
 <script>
 	import '../app.postcss';
 	import { base } from '$app/paths';
@@ -24,3 +45,4 @@
 </script>
 
 <slot />
+
