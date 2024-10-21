@@ -115,7 +115,7 @@
 	h1, h2, h3, p {
   		display: grid;
   		/*Ger utrymme mellan element*/
-  		margin: 11px;
+  		margin: 10px;
 	}
 
 	</style>
