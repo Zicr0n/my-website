@@ -1,8 +1,6 @@
 <nav>
 	<a href="{base}/">Home</a>
 	<a href="{base}/photoapp">Photo App</a>
-	<a href="{base}/about">About</a>
-
 	
 
 </nav>

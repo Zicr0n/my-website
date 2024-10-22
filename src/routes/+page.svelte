@@ -40,6 +40,30 @@
 	  margin: auto;
 	}
 
+	@font-face{
+		font-family: "aero";
+		src: url("fonts/aero/Aero.ttf");
+
+	}
+	@font-face{
+		font-family: "nulshock";
+		src: url("fonts/nullshock/nulshock.ttf");
+	}
+	@font-face{
+		font-family: "ethnocentric";
+		src: url("fonts/ethnocentric.otf");
+	}
+
+	#myName{
+		font-size: 40px;
+		line-height: 35px;
+		padding-bottom: 30px;
+		font-family: "ethnocentric";
+		text-decoration: dashed;
+		text-wrap:pretty;	
+		color: #ff0066;
+	}
+
 	#inspo{
     	font-family: 'Times New Roman', Times, serif;
 		font-style: italic;
@@ -47,14 +71,23 @@
 		text-wrap:wrap;
 		padding-left: 20px;
 		padding-top: 10px;
-		
-		
 	}
 	.quote{
 		transition: scale 0.2s ease-out;
 	}
 	.quote:hover{
 		scale: 1.05;
+	}
+
+	span{
+		color: #ff0066;
+		font-style: normal;
+	}
+
+	h1, h2, h3, p {
+  		display: grid;
+  		/*Ger utrymme mellan element*/
+  		margin: 11px;
 	}
 
 	/* diamond hovering */
@@ -97,25 +130,6 @@
 	}
 	#diamond-holder img:hover{
 		scale: 1.21;
-	}
-
-	span{
-		color: #ff0066;
-	}
-
-	#myName{
-		font-size: 40px;
-		line-height: 35px;
-		padding-bottom: 30px;
-		font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-		text-decoration: dashed;
-		text-wrap:pretty;
-	}
-
-	h1, h2, h3, p {
-  		display: grid;
-  		/*Ger utrymme mellan element*/
-  		margin: 11px;
 	}
 
 	</style>
