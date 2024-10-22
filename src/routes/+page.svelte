@@ -6,11 +6,11 @@
 	  	<!--Under denna kommer vi lägga till fler element-->
 	  	
 		<p id="inspo" class="quote">
-			"The only way to learn a new programming language is by writing programs in it." <span><strong>Dennis Ritchie , creator of the C programming language.
+			<strong>"The only way to learn a new programming language is by writing programs in it." <br><span>Dennis Ritchie , creator of the C programming language.
 		</p>
 
 		<p class="quote"style="padding-left: 20px; padding-top: 10px;font-family:'Times New Roman', Times, serif; font-style:italic">
-		"Every great developer you know got there by solving problems they were unqualified to solve until they actually did it." - <span><strong>Patrick McKenzie, software engineer and entrepreneur.</span>
+		<strong>"Every great developer you know got there by solving problems they were unqualified to solve until they actually did it." - <span><br>Patrick McKenzie, software engineer and entrepreneur.</span>
 		</p>
   
 	</div>
@@ -41,17 +41,8 @@
 	}
 
 	@font-face{
-		font-family: "aero";
-		src: url("fonts/aero/Aero.ttf");
-
-	}
-	@font-face{
-		font-family: "nulshock";
-		src: url("fonts/nullshock/nulshock.ttf");
-	}
-	@font-face{
 		font-family: "ethnocentric";
-		src: url("fonts/ethnocentric.otf");
+		src: url("/fonts/ethnocentric.otf");
 	}
 
 	#myName{
@@ -62,12 +53,15 @@
 		text-decoration: dashed;
 		text-wrap:pretty;	
 		color: #ff0066;
+		transition: transform 0.2s ease-out;
+	}
+	#myName:hover{
+		transform: translateX(-10px);
 	}
 
 	#inspo{
     	font-family: 'Times New Roman', Times, serif;
 		font-style: italic;
-    	font-size: 16px;
 		text-wrap:wrap;
 		padding-left: 20px;
 		padding-top: 10px;
@@ -76,7 +70,8 @@
 		transition: scale 0.2s ease-out;
 	}
 	.quote:hover{
-		scale: 1.05;
+		scale: 1.1;
+		animation: hovering 10s ease-in-out infinite;
 	}
 
 	span{

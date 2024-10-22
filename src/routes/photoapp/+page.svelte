@@ -1,29 +1,79 @@
+<script>
+    let image = "https://picsum.photos/id/70/367/267"
+    let photo = "https://picsum.photos/id/88/367/267"
+    let picture = "https://picsum.photos/id/93/367/267"
+</script>
+
 <main>
-    
+    <h1>
+        Photoapp
+    </h1>
     <div class="photos">  
-            <div class="image-wrapper"><img src="https://i.redd.it/rofzm44oka091.png" alt="myImage"></div>
-            <div class="image-wrapper"><img src="https://i.redd.it/rofzm44oka091.png" alt="myImage"></div>
-            <div class="image-wrapper"><img src="https://i.redd.it/vd9dc7wfk9471.png" alt="myImage"></div>
-            <div class="image-wrapper"><img src="https://miro.medium.com/v2/resize:fit:1400/0*YeaUsQyhXSL1TCTH.png" alt="myImage"></div>   
+            <div class="image-wrapper"><img src={image} alt="myImage"></div>
+            <div class="image-wrapper"><img src={photo} alt="myImage"></div>
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
+            <div class="image-wrapper"><img src={picture} alt="myImage"></div>   
     </div>
 </main>
 
     <style>
         .photos{
             display: flex;
-            max-width: 90vw;
+            flex-wrap: wrap;
+            max-width: 100vw;
 
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
+
+            overflow: hidden;
+            padding-bottom: 100px;
         }
+
+        .image-wrapper{
+            flex-grow: 1;
+            margin: 15px;
+
+            min-width: 300px;
+
+            border-radius: 20px;
+            background-color: gainsboro;
+            
+            box-shadow: 4px 8px 10px black;
+
+            transition: flex-grow 200ms ease-in-out normal;
+            
+        }
+
+        .image-wrapper:hover{
+            flex-grow:2;
+        }
+
+        .image-wrapper:active { 
+            transition: transform 200ms ease-in-out normal;
+            transform: scale(0.9); }
 
         .image-wrapper img{
             width: 100%;
-            flex: 1;
-            margin: 10px;
+            border-radius: 20px;
         }
 
-        .photos img{
-            width: 100%
+        h1{
+            text-align: center;
+            font-size: 50px;
+            margin: 20px;
+            color: grey;
         }
+
     </style>
