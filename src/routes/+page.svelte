@@ -53,6 +53,7 @@
 		text-decoration: dashed;
 		text-wrap:pretty;	
 		color: #ff0066;
+		text-shadow: 2px 2px #d20557;
 		transition: transform 0.2s ease-out;
 	}
 	#myName:hover{
