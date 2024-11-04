@@ -17,20 +17,18 @@
 	let email = "";
 	let password = "";
 
-	function handleSubmit()
-	{
+	function handleSubmit(){
 		// $ gör att subscribe lyssnar på denna förändring.
 		let new_user = {username: username, password : password, email: email, color: color};
 
 		let filtered_list = users.filter(user => user.email == new_user.email)
+		console.log(new_user)
 
-		if (filtered_list.length != 0){
-			alert("User already exists, try logging in")
+		if (filtered_list.length != 0 && filtered_list[0].password === new_user.password){
+			alert("Logged in successfully")	
 		}
 		else{
-			alert("Welcome, register successful!");
-			users = [...users, new_user];
-			$users_store = JSON.stringify(users)
+			alert("User does not exist or password is incorrect")
 		}
 	}
 
@@ -41,51 +39,30 @@
 </script>
 <main>
 	<div class="container">
-		<h2>Register</h2>
-
+		<h2>Login</h2>
 		<form action="" on:submit|preventDefault={handleSubmit}>
-
-			<label for="username">Username:</label>
-			<input type="text" id="username" maxlength=16 bind:value={username}>
-
 			<label for="email">E-mail:</label>
 			<input type="email" id="email" bind:value={email}>
 
-
 			<label for="password">Password:</label>
 			<input type="password" id="password" bind:value={password}>
-			
-			<label for="favoriteColor">Favorite Color</label>
 
-			<div class="colorSelection">
-
-				<select id="favoriteColor" bind:value={color}>
-					{#each colors as c}
-						<option value={c.value}>{c.name}</option>
-					{/each}
-				</select>
-
-				<div style="width:50px; height:50px; border-radius:50%; overflow:hidden; background:{color};"></div>
-			</div>
-
-			<input id="submit" type="submit" value="register">
+			<input id="submit" type="submit" value="login">
 		</form>
-		
 	</div>
-	<a id="login" href="{base}/login">Have an account already? Log in.</a>
+	<a id="login" href="{base}/register">Don't have an account? Register here.</a>
 </main>
 
 <style>
 	main{
+		
         background-size: cover;
-		height: 100vh;
-		width: 100vw;
+        width: 100%;
+        height: 100%;
         padding: 5%;
 
 		min-width: 500px;
 		min-height: 500px;
-
-		background-size:contain;
 
 		background: rgb(83,0,33);
 		background: linear-gradient(0deg, #ff0066 0%, rgba(255,255,255,0) 100%);
@@ -97,7 +74,7 @@
 		width: 10%;
 		min-width: 300px;
 		min-height: 500px;
-		height: 80%;
+		height: 50%;
 		margin: auto;
 
 		box-shadow: 0px 0px 10px 2px white;
@@ -107,7 +84,7 @@
 		display: flex;
 		flex-direction: column;
 		align-items: center;
-		justify-content: space-evenly;
+		justify-content: space-around;
 	}
 
 	.container h2{
@@ -122,6 +99,12 @@
 	.container label{
 		font-family: 'ethnocentric';
 		color: #ff0066;
+	}
+
+	form{
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
 	}
 
 	form input{
@@ -144,42 +127,11 @@
 		background: darkgray
 	}
 
-	form select{
-		border: none;
-
-		border-radius: 20px;
-		background: linear-gradient(90deg, rgba(255,0,102,1) 0%, rgb(253, 136, 136) 100%);
-		margin-top: 4px;
-
-		border-radius: 20px;
-
-		color: white;
-
-		transition: all 200ms ease-out 0s;
-	}
-
-	form select:hover{
-		background: darkgray;
-	}
-
-	form select option{
-		border-radius: 20px;
-		background-color:#ff0066;
-	}
-
-	.colorSelection{
-		display: flex;
-		align-items: flex-start;
-		flex-direction: row;
-
-		justify-content: space-between;
-	}
-
 	#submit{
 		background: #ff0066;
 		color: white;
 		width: 100%;
-		margin-top: 32px;
+		margin-top: 70px;
 		padding: 10px 20px;
 		border-radius: 100px;
 

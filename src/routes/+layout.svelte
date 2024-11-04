@@ -5,11 +5,22 @@
 		<a id="photo" href="{base}/photoapp">Photo App</a>
 		<a href="{base}/about">About</a>
 	</div>
+	<div class="account">
+		<a class="accountbutton" href="{base}/register">Register</a>
+		<a class="accountbutton" href="{base}/login">Login</a>
+	</div>
 	
-	<a id="register" href="{base}/register">Register</a>
 </nav>
 
 <style>
+	:global(body), :global(html){
+		margin: 0%;
+		padding: 0%;
+		height: 100vh;
+		width: 100vw;
+
+		background-image: url(https://img.freepik.com/free-vector/seamless-white-interlaced-rounded-arc-patterned-background_53876-97975.jpg);
+	}
 	nav{
 		display: flex;
 		width: 100vw;
@@ -23,6 +34,11 @@
 	#logo{
 		max-width: 50px;
 		margin-left: 24px;
+
+		transition: all 200ms ease-in-out;
+	}
+	#logo:hover{
+		scale: 1.1;
 	}
 
 	.centralTab{
@@ -59,24 +75,37 @@
 		flex: 2;
 	}
 
-	#register{
+	.account{
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		margin-right: 20px;
+	}
+
+	.accountbutton{
+		display: flex;
 		font-family: "ethnocentric";
-		margin-right: 24px;
 		padding: 10px;
-		background-color: rgb(229, 229, 229);
+
+		margin-right: 10px;
+
+		color: white;
+		background-color: #ff0066;
+		box-shadow: 2px 2px 0px #ac0045;
 
 		border-radius: 20px;
 
 		transition: all 0.3s ease 0s;
 	}
 
-	#register:hover{
+	.accountbutton:hover{
 		background-color: darkgray;
-		
+		box-shadow: 0px 0px 5px black;
 	}
 
-	#register:active{
+	.accountbutton:active{
 		scale: 0.95;
+		background-color: rgb(123, 123, 123);
 	}
 
 	#photo{
