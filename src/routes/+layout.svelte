@@ -1,8 +1,10 @@
+
 <nav>
 	<img id="logo" src="images/diamond-shape.png" alt="diamond">
 	<div class="centralTab">
 		<a href="{base}/">Home</a>
 		<a id="photo" href="{base}/photoapp">Photo App</a>
+		<a id="shoppinglist" href="{base}/shoppinglist">Shopping List</a>
 		<a href="{base}/about">About</a>
 	</div>
 	<div class="account">
@@ -51,7 +53,7 @@
 
 	.centralTab a{
 		flex-basis: auto;
-		flex: 1.5;
+		flex: fit-content;
 		margin-right: 4px;
 		margin-left: 4px;	
 
@@ -66,13 +68,13 @@
 		border-color: #ff0066;
 		border-width: 2px;
 
-		transition: flex-grow 200ms ease-in-out;
+		transition: all 200ms ease-in-out;
 
 		text-align: center;
 	}
 
 	.centralTab a:hover{
-		flex: 2;
+		flex-grow: 4;
 	}
 
 	.account{
@@ -111,6 +113,13 @@
 	#photo{
 		border-color: #00FF99;
 		color: #00FF99;
+	}
+
+	#shoppinglist{
+		border-color: #E5FF00;
+		color: #bbcc1b;
+
+		font-size: fit-content;
 	}
 </style>
 

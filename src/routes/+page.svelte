@@ -1,4 +1,8 @@
-<main>
+<script>
+	let theme = "#ff0066";
+</script>
+
+<main style="--theme-color: {theme}">
 	<div>
 		<h1 id=myName> Mohammad Samir Alalwani </h1>
 	  	<h2>Här har jag samlat min uppgifter jag gjort i samband med webbutveckling i årskurs 2 på Maja Beskowgymnasiet!</h2>
@@ -52,7 +56,7 @@
 		font-family: "ethnocentric";
 		text-decoration: dashed;
 		text-wrap:pretty;	
-		color: #ff0066;
+		color: var(--theme-color);
 		text-shadow: 2px 2px #d20557;
 		transition: transform 0.2s ease-out;
 	}

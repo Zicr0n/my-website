@@ -51,7 +51,6 @@
 			<label for="email">E-mail:</label>
 			<input type="email" id="email" bind:value={email}>
 
-
 			<label for="password">Password:</label>
 			<input type="password" id="password" bind:value={password}>
 			
