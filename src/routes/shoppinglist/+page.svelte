@@ -54,7 +54,7 @@
             <ul>
                 {#each items as item}
                     {#if item.bought === false}
-                        <li>
+                        <li transition:fade>
                             <select bind:value={item.prio} on:change={sortList}  style="background-color: {item.prio}; color: transparent;">
                                 <option value="red" style="background-color: red">Hög</option>
                                 <option value="yellow" style="background-color: yellow">Mid</option>
@@ -73,7 +73,7 @@
             <ul>
                 {#each items as item}
                     {#if item.bought === true}
-                        <li>
+                        <li transition:fade>
                             <select bind:value={item.prio} on:change={sortList} style="background-color: {item.prio}; color: transparent;">
                                 <option value="red" style="background-color: red">Hög</option>
                                 <option value="yellow" style="background-color: yellow">Mid</option>

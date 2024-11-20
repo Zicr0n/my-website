@@ -20,6 +20,7 @@
 	function handleSubmit(){
 		// $ gör att subscribe lyssnar på denna förändring.
 		let new_user = {username: username, password : password, email: email, color: color};
+		console.log(new_user.color)
 
 		let filtered_list = users.filter(user => user.email == new_user.email)
 		console.log(new_user)
@@ -31,10 +32,6 @@
 			alert("User does not exist or password is incorrect")
 		}
 	}
-
-	/* ----------- */
-
-	let colors = [{name : "Black", value : "black"},{name : "Blue", value : "blue"}, {name : "Red", value : "red"}];
 	
 </script>
 <main>

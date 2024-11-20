@@ -12,20 +12,20 @@
 
 	let users = [];
 
-	let color = "black";
+	let color = "#ffffff";
 	let username = "";
 	let email = "";
 	let password = "";
 
 	function handleSubmit()
 	{
-		// $ gör att subscribe lyssnar på denna förändring.
 		let new_user = {username: username, password : password, email: email, color: color};
 
 		let filtered_list = users.filter(user => user.email == new_user.email)
+		console.log(new_user.color)
 
 		if (filtered_list.length != 0){
-			alert("User already exists, try logging in")
+			alert(email + " is already taken, try logging in")
 		}
 		else{
 			alert("Welcome, register successful!");
@@ -46,25 +46,18 @@
 		<form action="" on:submit|preventDefault={handleSubmit}>
 
 			<label for="username">Username:</label>
-			<input type="text" id="username" maxlength=16 bind:value={username}>
+			<input type="text" id="username" required minlength=3 maxlength=16 bind:value={username}>
 
 			<label for="email">E-mail:</label>
-			<input type="email" id="email" bind:value={email}>
+			<input type="email" id="email" required bind:value={email}>
 
 			<label for="password">Password:</label>
-			<input type="password" id="password" bind:value={password}>
+			<input type="password" minlength=8 required id="password" bind:value={password}>
 			
 			<label for="favoriteColor">Favorite Color</label>
 
 			<div class="colorSelection">
-
-				<select id="favoriteColor" bind:value={color}>
-					{#each colors as c}
-						<option value={c.value}>{c.name}</option>
-					{/each}
-				</select>
-
-				<div style="width:50px; height:50px; border-radius:50%; overflow:hidden; background:{color};"></div>
+				<input class="colorWheel" type="color" required, id="favoriteColor" bind:value={color}>
 			</div>
 
 			<input id="submit" type="submit" value="register">
@@ -143,27 +136,23 @@
 		background: darkgray
 	}
 
-	form select{
+	.colorWheel{
+		background-color: wheat;
+		background: none;
+
+		width: 50px;
+		height: 50px;
+
 		border: none;
+		border-radius: 50%;
+		padding: 0;
+		margin: 0;
 
-		border-radius: 20px;
-		background: linear-gradient(90deg, rgba(255,0,102,1) 0%, rgb(253, 136, 136) 100%);
-		margin-top: 4px;
+		outline-color: black;
+		outline-width: 10px;
 
-		border-radius: 20px;
-
-		color: white;
-
-		transition: all 200ms ease-out 0s;
-	}
-
-	form select:hover{
-		background: darkgray;
-	}
-
-	form select option{
-		border-radius: 20px;
-		background-color:#ff0066;
+		border-width: 10px;
+		border-color: black;
 	}
 
 	.colorSelection{

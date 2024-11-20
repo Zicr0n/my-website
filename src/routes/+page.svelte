@@ -123,6 +123,8 @@
 		animation: hovering 6s ease-in-out infinite;
 
 		transition: rotate 700ms ease-in-out;
+
+		transform-style: preserve-3d;
 	}
 	#diamond-holder img{
 		transition: scale 300ms ease-in-out;
