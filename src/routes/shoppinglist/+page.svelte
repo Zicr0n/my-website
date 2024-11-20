@@ -1,28 +1,42 @@
 
 <script>
     import { fade } from 'svelte/transition'
-    let items = [{name: "Milk" , bought : false}];
+    let items = [{name: "Milk" , bought : false, prio : "green"}];
 
     let itemToAdd = "";
 
     function addItem(){
         if (itemToAdd == ""){
-            alert("There is nothing to add!")
+            alert("There is nothing to add!");
             return;
         }
 
-        items.unshift({name : itemToAdd, bought : false})
-        items=items
+        items.unshift({name : itemToAdd, bought : false, prio: "green"});
+        
+        sortList();
     }
 
     function removeItem(item){
        items.splice(items.indexOf(item), 1)
-       items=items;
+       
+       sortList();
     }
 
     function moveItem(item){
         item.bought = !item.bought;
-        items = items
+        
+        sortList()
+    }
+
+    function sortList(){
+        let clonedList = [...items]
+        
+        clonedList.sort((a,b) => {
+            const order = {red: 0, yellow : 1, green : 2}
+            return order[a.prio] - order[b.prio]
+        })
+
+        items = [...clonedList]
     }
 
 </script>
@@ -41,6 +55,12 @@
                 {#each items as item}
                     {#if item.bought === false}
                         <li>
+                            <select bind:value={item.prio} on:change={sortList}  style="background-color: {item.prio}; color: transparent;">
+                                <option value="red" style="background-color: red">Hög</option>
+                                <option value="yellow" style="background-color: yellow">Mid</option>
+                                <option value="green" style="background-color: green">Låg</option>
+                            </select>
+
                             <button id="moveItemButton" on:click={moveItem(item)}>{item.bought?"":item.name}</button>
                             <button id="removeItemButton" on:click={removeItem(item)}>x</button>
                         </li>  
@@ -54,6 +74,12 @@
                 {#each items as item}
                     {#if item.bought === true}
                         <li>
+                            <select bind:value={item.prio} on:change={sortList} style="background-color: {item.prio}; color: transparent;">
+                                <option value="red" style="background-color: red">Hög</option>
+                                <option value="yellow" style="background-color: yellow">Mid</option>
+                                <option value="green" style="background-color: green">Låg</option>
+                            </select>
+                            
                             <button id="moveItemButton" on:click={moveItem(item)}>{item.bought?item.name:""}</button>
                             <button id="removeItemButton" on:click={removeItem(item)}>x</button>
                         </li>  
@@ -166,6 +192,22 @@
         color: rgba(255, 255, 255, 0.541);
     }
 
+    select{
+        background-image: none;
+        padding: 0;
+        margin: none;
+
+        border-radius: 50%;
+
+        height: 15px;
+        width: 15px;
+
+        overflow: hidden;
+
+        outline: none;
+        border: none;
+    }
+
     input::selection{
         background-color: #e5ff009c;
         color: black;
@@ -187,26 +229,26 @@
 
     #addItemButton:active{
         scale: 0.9;
-        filter: grayscale(100);
+        filter: grayscale(100%);
     }
 
     #moveItemButton{
-        width: 100%;
+        flex: 0.9;
         text-align: left;
     }
 
     li{
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-evenly;
+
         margin: 10px;
-        margin-bottom: 15px;
         padding-bottom: 4px;
-        padding-left: 10px;
 
         font-size: 24px;
         color: aliceblue;
 
         background-color: rgb(0,0,0, 0.2);
-        
-        position: relative;
         
         border-width: 0px 0px 1px 0px;
         border-color: #E5FF00;
@@ -221,15 +263,8 @@
     }
 
     #removeItemButton{
-        position: absolute;
-        right: 0;
-        bottom: 2.5px;
-
-        padding-right: 5px;
-
         color: #E5FF00;
-
-        text-align: center;
+        display: flex;
 
         transition: all 200ms ease-in-out;
     }

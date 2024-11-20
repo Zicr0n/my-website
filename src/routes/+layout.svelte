@@ -1,12 +1,15 @@
 
 <nav>
 	<img id="logo" src="images/diamond-shape.png" alt="diamond">
+
 	<div class="centralTab">
 		<a href="{base}/">Home</a>
 		<a id="photo" href="{base}/photoapp">Photo App</a>
 		<a id="shoppinglist" href="{base}/shoppinglist">Shopping List</a>
+		<a href="{base}/memory">Memory</a>
 		<a href="{base}/about">About</a>
 	</div>
+
 	<div class="account">
 		<a class="accountbutton" href="{base}/register">Register</a>
 		<a class="accountbutton" href="{base}/login">Login</a>
@@ -20,14 +23,18 @@
 		padding: 0%;
 		height: 100vh;
 		width: 100vw;
+		overflow-x: hidden;
 
 		background-image: url(https://img.freepik.com/free-vector/seamless-white-interlaced-rounded-arc-patterned-background_53876-97975.jpg);
 	}
+
 	nav{
 		display: flex;
 		width: 100vw;
 		justify-content: space-between;
 		align-items: center;
+
+		margin: 0%;
 
 		padding-top: 10px;
 		padding-bottom: 10px;
@@ -54,13 +61,12 @@
 	.centralTab a{
 		flex-basis: auto;
 		flex: fit-content;
-		margin-right: 4px;
-		margin-left: 4px;	
+		margin: 0px 4px;
 
 		padding: 4px;
 		
 		color:#ff0066;
-		background-color: rgb(248, 248, 248);	
+		background-color: white;	
 
 		font-family: 'Courier New', Courier, monospace;
 

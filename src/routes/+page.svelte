@@ -5,6 +5,7 @@
 <main style="--theme-color: {theme}">
 	<div>
 		<h1 id=myName> Mohammad Samir Alalwani </h1>
+
 	  	<h2>Här har jag samlat min uppgifter jag gjort i samband med webbutveckling i årskurs 2 på Maja Beskowgymnasiet!</h2>
 	  	<h3>Inspirerade citat för min webbutvecklingsresa:</h3>
 	  	<!--Under denna kommer vi lägga till fler element-->
@@ -49,7 +50,7 @@
 		src: url("/fonts/ethnocentric.otf");
 	}
 
-	#myName{
+	h1{
 		font-size: 40px;
 		line-height: 35px;
 		padding-bottom: 30px;
@@ -60,7 +61,8 @@
 		text-shadow: 2px 2px #d20557;
 		transition: transform 0.2s ease-out;
 	}
-	#myName:hover{
+	
+	h1:hover{
 		transform: translateX(-10px);
 	}
 
