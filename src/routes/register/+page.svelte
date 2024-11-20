@@ -12,7 +12,7 @@
 
 	let users = [];
 
-	let color = "#ffffff";
+	let color = "black";
 	let username = "";
 	let email = "";
 	let password = "";
@@ -22,7 +22,6 @@
 		let new_user = {username: username, password : password, email: email, color: color};
 
 		let filtered_list = users.filter(user => user.email == new_user.email)
-		console.log(new_user.color)
 
 		if (filtered_list.length != 0){
 			alert(email + " is already taken, try logging in")
@@ -57,7 +56,14 @@
 			<label for="favoriteColor">Favorite Color</label>
 
 			<div class="colorSelection">
-				<input class="colorWheel" type="color" required, id="favoriteColor" bind:value={color}>
+
+				<select required id="favoriteColor" bind:value={color}>
+					{#each colors as c}
+						<option value={c.value}>{c.name}</option>
+					{/each}
+				</select>
+
+				<div style="width:50px; height:50px; border-radius:50%; overflow:hidden; background:{color};"></div>
 			</div>
 
 			<input id="submit" type="submit" value="register">
@@ -136,23 +142,27 @@
 		background: darkgray
 	}
 
-	.colorWheel{
-		background-color: wheat;
-		background: none;
-
-		width: 50px;
-		height: 50px;
-
+	form select{
 		border: none;
-		border-radius: 50%;
-		padding: 0;
-		margin: 0;
 
-		outline-color: black;
-		outline-width: 10px;
+		border-radius: 20px;
+		background: linear-gradient(90deg, rgba(255,0,102,1) 0%, rgb(253, 136, 136) 100%);
+		margin-top: 4px;
 
-		border-width: 10px;
-		border-color: black;
+		border-radius: 20px;
+
+		color: white;
+
+		transition: all 200ms ease-out 0s;
+	}
+
+	form select:hover{
+		background: darkgray;
+	}
+
+	form select option{
+		border-radius: 20px;
+		background-color:#ff0066;
 	}
 
 	.colorSelection{
