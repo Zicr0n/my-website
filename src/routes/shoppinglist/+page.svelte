@@ -12,32 +12,26 @@
         }
 
         items.unshift({name : itemToAdd, bought : false, prio: "green"});
-        
-        sortList();
+        items = items
     }
 
     function removeItem(item){
        items.splice(items.indexOf(item), 1)
-       
-       sortList();
+
+       items = items
     }
 
     function moveItem(item){
         item.bought = !item.bought;
-        
-        sortList()
-    }
 
-    function sortList(){
-        let clonedList = [...items]
-        
-        clonedList.sort((a,b) => {
-            const order = {red: 0, yellow : 1, green : 2}
-            return order[a.prio] - order[b.prio]
-        })
-
-        items = [...clonedList]
+        items = items
     }
+        
+    $:items.sort((a,b) => {
+        const order = {red: 0, yellow : 1, green : 2}
+        return order[a.prio] - order[b.prio]
+    })
+
 
 </script>
 
@@ -55,7 +49,7 @@
                 {#each items as item}
                     {#if item.bought === false}
                         <li transition:fade>
-                            <select bind:value={item.prio} on:change={sortList}  style="background-color: {item.prio}; color: transparent;">
+                            <select bind:value={item.prio}  style="background-color: {item.prio}; color: transparent;">
                                 <option value="red" style="background-color: red">Hög</option>
                                 <option value="yellow" style="background-color: yellow">Mid</option>
                                 <option value="green" style="background-color: green">Låg</option>
@@ -74,7 +68,7 @@
                 {#each items as item}
                     {#if item.bought === true}
                         <li transition:fade>
-                            <select bind:value={item.prio} on:change={sortList} style="background-color: {item.prio}; color: transparent;">
+                            <select bind:value={item.prio} style="background-color: {item.prio}; color: transparent;">
                                 <option value="red" style="background-color: red">Hög</option>
                                 <option value="yellow" style="background-color: yellow">Mid</option>
                                 <option value="green" style="background-color: green">Låg</option>
@@ -91,6 +85,9 @@
 </main>
 
 <style>
+    main{
+        overflow: hidden;
+    }
     .container{
         display: grid;
         grid-template-rows: 1fr 9fr 1fr;
@@ -99,20 +96,22 @@
         background-color: rgb(0,0,0,0.65);
         box-shadow: 0px 0px 10px 10px rgb(0,0,0,0.65);
         border-radius: 10px;
-        border-style: inset;
 
         width: 60vw;
-        height: 80vh;
+        min-height: 80vh;
+        max-height: 80vh;
         border-style: none;
 
         justify-self: center;
+        
     }
 
     .container h1{
         text-align: center;
         border-radius: 5px;
         padding: 4px;
-
+        
+        margin: 20px;
         justify-self: center;
         align-self: center;
 
@@ -128,15 +127,18 @@
         grid-column-gap: 10px;
         
         margin: 0px 10px;
-        height: 100%;
+        height: 100vh;
     }
 
     .categories_container section{
         width: 100%;
+        height: 70vh;
 
         border-radius: 10px;
         border-width: 2px;
         border-color: #E5FF00;
+
+        overflow-y: scroll;
     }
 
     .categories_container section:first-child{

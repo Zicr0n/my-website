@@ -6,18 +6,22 @@
 		<a href="{base}/">Home</a>
 		<a id="photo" href="{base}/photoapp">Photo App</a>
 		<a id="shoppinglist" href="{base}/shoppinglist">Shopping List</a>
-		<a href="{base}/memory">Memory</a>
+		<a href="{base}/memory" style="border-color : #1900FF; color: #1900FF;">Memory</a>
 		<a href="{base}/about">About</a>
 	</div>
 
 	<div class="account">
 		<a class="accountbutton" href="{base}/register">Register</a>
 		<a class="accountbutton" href="{base}/login">Login</a>
+		<a href="{base}/chat" id="chat" style="">
+		<img src="images/chat.png" alt="chat" >
+		</a>
 	</div>
+
 	
 </nav>
 
-<style>
+<style>	
 	:global(body), :global(html){
 		margin: 0%;
 		padding: 0%;
@@ -30,14 +34,14 @@
 
 	nav{
 		display: flex;
-		width: 100vw;
+		width: 100%;
+
 		justify-content: space-between;
 		align-items: center;
 
 		margin: 0%;
 
-		padding-top: 10px;
-		padding-bottom: 10px;
+		padding: 10px 10px;
 	}
 
 	#logo{
@@ -52,9 +56,9 @@
 
 	.centralTab{
 		display: flex;
-		width: 50vw;
 		justify-content: center;
-		max-width: 30vw;
+		width: 50vw;
+		max-width: 80vw;
 		height: 35px;
 	}
 
@@ -106,7 +110,7 @@
 		transition: all 0.3s ease 0s;
 	}
 
-	.accountbutton:hover{
+	.accountbutton:hover, #chat:hover{
 		background-color: darkgray;
 		box-shadow: 0px 0px 5px black;
 	}
@@ -126,6 +130,21 @@
 		color: #bbcc1b;
 
 		font-size: fit-content;
+	}
+
+	#chat{
+		background-color: #ff0066; 
+		box-shadow: 2px 2px 0px #ac0045;
+
+		width:50px; 
+		height:50px; 
+		
+		border-radius: 50%; 
+
+		padding:10px; 
+
+		transition: all 0.3s ease 0s;
+
 	}
 </style>
 

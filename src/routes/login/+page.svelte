@@ -1,8 +1,8 @@
 <script>
 	import { base } from '$app/paths';
 	import {users_store} from '$lib/user';
-	
 	import { onMount } from 'svelte';
+	
 	onMount(() => {
 		/*Check if has more then 2 characters*/
 		if($users_store.length > 2){
@@ -20,7 +20,6 @@
 	function handleSubmit(){
 		// $ gör att subscribe lyssnar på denna förändring.
 		let new_user = {username: username, password : password, email: email, color: color};
-		console.log(new_user.color)
 
 		let filtered_list = users.filter(user => user.email == new_user.email)
 		console.log(new_user)

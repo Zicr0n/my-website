@@ -152,8 +152,8 @@
 <main>  
     {#each cards as card}
         <button on:click={flipCard(card)} class="card" class:flipped={card.flipped}>
-            <img class="front" src={card.image} alt="memoryCard">
-            <img class="back" src="favicon.png" alt="memoryCard">
+            <img class="front" src={card.image} draggable="false" alt="memoryCard">
+            <img class="back" src="favicon.png" draggable="false" alt="memoryCard">
         </button>
     {/each} 
 </main>
@@ -207,7 +207,7 @@
 
     .winDisplay{
         width: 100vw;
-        background-color: blue;
+        background-color: #1900FF;
         color: white;
 
         font-family: 'ethnocentric';

@@ -45,10 +45,10 @@
 	  margin: auto;
 	}
 
-	@font-face{
-		font-family: "ethnocentric";
-		src: url("/fonts/ethnocentric.otf");
-	}
+		@font-face{
+			font-family: "ethnocentric";
+			src: url("/fonts/ethnocentric.otf");
+		}
 
 	h1{
 		font-size: 40px;
