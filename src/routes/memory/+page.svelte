@@ -33,14 +33,10 @@
 
     function restartGame()
     {
-        console.log("restart")
         winCondition = false;
         // Reset points
-        greenPoints = 0;
-        redPoints = 0;
-        
-        flippedCards = [];
-        cards = [];
+        greenPoints, redPoints = 0,0
+        flippedCards, cards = [],[];
 
         createCards();
         
@@ -256,11 +252,15 @@
 
         backface-visibility: hidden;
         transform-style: preserve-3d;
+
+        transition: transform 200ms ease-in-out;
     }
 
     .front{
-        transform: rotateY(180deg)
+        transform: rotateY(180deg);
+        transition: all 200ms ;
     }
+
 
     .flipped{
         transform: rotateY(180deg);

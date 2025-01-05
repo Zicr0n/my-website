@@ -1,6 +1,6 @@
 
 <nav>
-	<img id="logo" src="images/diamond-shape.png" alt="diamond">
+	<a href="{base}/search"><img src="images/search.png" alt="pokemon search" id="search"></a>
 
 	<div class="centralTab">
 		<a href="{base}/">Home</a>
@@ -14,7 +14,7 @@
 		<a class="accountbutton" href="{base}/register">Register</a>
 		<a class="accountbutton" href="{base}/login">Login</a>
 		<a href="{base}/chat" id="chat" style="">
-		<img src="images/chat.png" alt="chat" >
+			<img src="images/chat.png" alt="chat" >
 		</a>
 	</div>
 
@@ -22,6 +22,10 @@
 </nav>
 
 <style>	
+	@font-face{
+			font-family: "ethnocentric";
+			src: url("/fonts/ethnocentric.otf");
+		}
 	:global(body), :global(html){
 		margin: 0%;
 		padding: 0%;
@@ -42,16 +46,6 @@
 		margin: 0%;
 
 		padding: 10px 10px;
-	}
-
-	#logo{
-		max-width: 50px;
-		margin-left: 24px;
-
-		transition: all 200ms ease-in-out;
-	}
-	#logo:hover{
-		scale: 1.1;
 	}
 
 	.centralTab{
@@ -110,9 +104,10 @@
 		transition: all 0.3s ease 0s;
 	}
 
-	.accountbutton:hover, #chat:hover{
+	.accountbutton:hover, #chat:hover, #search:active{
 		background-color: darkgray;
 		box-shadow: 0px 0px 5px black;
+		scale: 0.95;
 	}
 
 	.accountbutton:active{
@@ -135,16 +130,36 @@
 	#chat{
 		background-color: #ff0066; 
 		box-shadow: 2px 2px 0px #ac0045;
-
+		
 		width:50px; 
 		height:50px; 
 		
 		border-radius: 50%; 
-
+		
 		padding:10px; 
-
+		
 		transition: all 0.3s ease 0s;
+		
+	}
+	
+	#search{
+		width: 50px; 
+		height: 50px; 
 
+		
+		margin: 0px 10px;
+		padding: 10px;
+		
+		border-radius: 20px; 
+
+		background-color: #ff0066; 
+		box-shadow: 2px 2px 0px #ac0045;
+
+		transition: all 200ms ease-out;
+	}
+
+	#search:hover{
+		transform: scale(1.05);
 	}
 </style>
 

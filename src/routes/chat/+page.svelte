@@ -27,6 +27,7 @@
 
         // random delay for Eliza's response time
         isWriting = true;
+        
         await new Promise((r) => setTimeout(r, 1000 + Math.random() * 1000));
 
         isWriting = false;

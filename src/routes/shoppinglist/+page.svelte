@@ -5,7 +5,8 @@
 
     let itemToAdd = "";
 
-    function addItem(){
+    function addItem()
+    {
         if (itemToAdd == ""){
             alert("There is nothing to add!");
             return;
@@ -17,13 +18,11 @@
 
     function removeItem(item){
        items.splice(items.indexOf(item), 1)
-
        items = items
     }
 
     function moveItem(item){
         item.bought = !item.bought;
-
         items = items
     }
         
@@ -102,8 +101,7 @@
         max-height: 80vh;
         border-style: none;
 
-        justify-self: center;
-        
+        justify-self: center;  
     }
 
     .container h1{
