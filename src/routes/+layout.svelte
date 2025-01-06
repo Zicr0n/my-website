@@ -1,6 +1,6 @@
 
 <nav>
-	<a href="{base}/search"><img src="images/search.png" alt="pokemon search" id="search"></a>
+	<a href="{base}/search"><img src="/images/search.png" alt="pokemon search" id="search"></a>
 
 	<div class="centralTab">
 		<a href="{base}/">Home</a>
@@ -14,7 +14,7 @@
 		<a class="accountbutton" href="{base}/register">Register</a>
 		<a class="accountbutton" href="{base}/login">Login</a>
 		<a href="{base}/chat" id="chat" style="">
-			<img src="images/chat.png" alt="chat" >
+			<img src="/images/chat.png" alt="chat" >
 		</a>
 	</div>
 

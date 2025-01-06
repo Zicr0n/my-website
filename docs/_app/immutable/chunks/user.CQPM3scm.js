@@ -1,1 +1,0 @@
-import{w as s}from"./paths.DHPfNmlV.js";const e=(window==null?void 0:window.localStorage.getItem("users"))??"",o=(window==null?void 0:window.localStorage.getItem("chat"))??"",a=s(e),r=s(o);a.subscribe(t=>{window==null||window.localStorage.setItem("users",t)}),r.subscribe(t=>{window==null||window.localStorage.setItem("chat",t)});export{r as c,a as u};
