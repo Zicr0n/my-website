@@ -3,10 +3,8 @@
     import {search_store} from '$lib/user';
     import { onMount } from 'svelte';
     import { afterNavigate } from '$app/navigation';
-    import { goto } from '$app/navigation';
 
     let search;
-    console.log(base)
 
     let latestSearches = []
 
@@ -29,11 +27,9 @@
 <main>
     <div class="head">
         <a id="home" href="{base}/search">Home</a>
-         
-    <form on:submit|preventDefault={()=> goto(base + "/search/" + search)}>
-        <input type="text" placeholder="Sök upp en pokemon" bind:value={search} />
-    </form>
-                   
+        <form action="{base}/search/{search}" method="post">
+            <input type="search" placeholder="Sök upp en pokemon" bind:value={search} />
+        </form>
 
     </div>
 
