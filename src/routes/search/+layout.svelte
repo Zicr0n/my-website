@@ -30,7 +30,7 @@
     <div class="head">
         <a id="home" href="{base}/search">Home</a>
          
-    <form on:submit|preventDefault={()=> goto(base + '/search/'+search)}>
+    <form on:submit|preventDefault={()=> goto(base + "/search/" + search)}>
         <input type="text" placeholder="Sök upp en pokemon" bind:value={search} />
     </form>
                    
