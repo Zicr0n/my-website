@@ -6,6 +6,7 @@
     import { goto } from '$app/navigation';
 
     let search;
+    console.log(base)
 
     let latestSearches = []
 
