@@ -35,6 +35,7 @@
   "dependencies": {
     "@floating-ui/dom": "1.6.11",
     "elizabot": "^0.0.3",
+    "esm-env": "^1.2.1",
     "highlight.js": "11.10.0"
   }
 }
