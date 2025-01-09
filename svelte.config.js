@@ -14,7 +14,7 @@ const config = {
 		adapter: adapter({
 			pages: 'docs',
 			assets: 'docs',
-			fallback: null // Use 'index.html' as the fallback page
+			fallback: 'index.html' // Use 'index.html' as the fallback page
 		}),
 	}
 	
