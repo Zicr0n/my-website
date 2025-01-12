@@ -4,7 +4,6 @@ import { error } from '@sveltejs/kit';
 /* don't generate these pages at build time as we want to get the latest data from the API when a user navigates here */
 export const ssr = false;
 
-
 /** @type {import('./$types').PageLoad} */
 export async function load({ params, fetch }) {
     /* params.pokemon matches to the [pokemon] in the filesystem */
