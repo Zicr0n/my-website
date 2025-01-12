@@ -1,6 +1,6 @@
 
 <nav>
-	<!--<a href="{base}/search"><img src="/images/search.png" alt="pokemon search" id="search"></a>-->
+	<a href="{base}/search"><img src="/images/search.png" alt="pokemon search" id="search"></a>
 
 	<div class="centralTab">
 		<a href="{base}/">Home</a>
