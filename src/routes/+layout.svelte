@@ -165,9 +165,10 @@
 	import '../app.postcss';
 
 	import { dev } from '$app/environment';
+	import { base } from '$app/paths';
+	console.log(base)
 	//let base = dev ? '' : 'my-website';
 
-	import { base } from '$app/paths';
 	console.log(base)
 
 	// Highlight JS
