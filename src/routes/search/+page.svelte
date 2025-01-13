@@ -1,4 +1,4 @@
-<form on:submit|preventDefault={()=> goto("/search/"+ search)} method="get">
+<form on:submit|preventDefault={()=> goto("search/"+ search)} method="get">
     <input type="text" placeholder="Sök upp en pokemon" bind:value={search} />
 </form>
 
