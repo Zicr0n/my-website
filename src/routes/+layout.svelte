@@ -17,8 +17,6 @@
 			<img src="/images/chat.png" alt="chat" >
 		</a>
 	</div>
-
-	
 </nav>
 
 <style>	
@@ -165,7 +163,12 @@
 
 <script>
 	import '../app.postcss';
-	import { base } from '$app/paths';
+
+	import { dev } from '$app/environment';
+	let base = dev ? '' : '/my-website';
+
+	//import { base } from '$app/paths';
+	console.log(base)
 
 	// Highlight JS
 	import hljs from 'highlight.js/lib/core';
