@@ -166,7 +166,6 @@
 
 	import { dev } from '$app/environment';
 	import { base } from '$app/paths';
-	console.log(base)
 
 	// Highlight JS
 	import hljs from 'highlight.js/lib/core';
