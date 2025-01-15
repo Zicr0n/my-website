@@ -35,8 +35,10 @@
     {
         winCondition = false;
         // Reset points
-        greenPoints, redPoints = 0,0
-        flippedCards, cards = [],[];
+        greenPoints = 0;
+        redPoints = 0;
+        flippedCards = [];
+        cards = [];
 
         createCards();
         
