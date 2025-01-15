@@ -5,6 +5,7 @@
     import { afterNavigate } from '$app/navigation';
     import { goto } from '$app/navigation';
 
+    console.log(base)
     let search;
 
     let latestSearches = []
