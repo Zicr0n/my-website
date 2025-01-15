@@ -4,6 +4,11 @@
     <slot></slot>
 </main>
 
+<script>
+    import {base} from '$app/paths'
+    console.log(base)
+</script>
+
 <style>
     main{
         width: 80vw;
