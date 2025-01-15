@@ -14,7 +14,7 @@
 		<a class="accountbutton" href="{base}/register">Register</a>
 		<a class="accountbutton" href="{base}/login">Login</a>
 		<a href="{base}/chat" id="chat" style="">
-			<img src="/images/chat.png" alt="chat" >
+			<img src="{base}/images/chat.png" alt="chat" >
 		</a>
 	</div>
 </nav>
