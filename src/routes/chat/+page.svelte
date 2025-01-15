@@ -4,6 +4,8 @@
 
     import {chat_store} from '$lib/user';
     import { onMount } from 'svelte';
+
+    import { base } from '$app/paths';
     
 	onMount(() => { 
 		chat = $chat_store.length>2?JSON.parse($chat_store):[{user : botName, message : eliza.getInitial(), time : "null"}];
