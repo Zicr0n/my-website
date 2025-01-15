@@ -73,7 +73,7 @@
         <img style="width: 50px; border-radius:50%; margin: 10px 0px; box-shadow: 0px 0px 2px 2px; " src="images/ambatron.jpg" alt="">
         <h2 style="font-size: 16px; font-family:'ethnocentric'; color : #ff0066; text-shadow: 2px 2px #d20557; white-space : nowrap;">Ambatron</h2>
         <button style="width:50px; height:50px; background-color:#ff0066; padding: 8px;border-radius:50%;"on:click={resetChat}>
-            <img style="transform: scale(0.9)" src="/images/bin.png" alt="delete chat button">
+            <img style="transform: scale(0.9)" src="{base}/images/bin.png" alt="delete chat button">
         </button>
     </div>
     <section id="chatContent">
