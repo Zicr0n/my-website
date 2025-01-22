@@ -5,7 +5,7 @@ import { error } from '@sveltejs/kit';
 export const ssr = true;
 
 async function fetchData(url, fetch){
-    const response = await (fetch?fetch:window.fetch)(url, {
+    const response = await fetch(url, {
         method: 'GET', // *GET, POST, PUT, DELETE, etc. 
     });
 
@@ -14,32 +14,39 @@ async function fetchData(url, fetch){
         throw error(response.status, { message: response.statusText })
     }
 
+    console.log("After error")
+
     let data = await response.json(); // parses JSON response into native JavaScript objects
 
     return data
 }
 
-async function GetEvolutionTree(chainLink){
+async function GetEvolutionTree(chainLink, fetch){
     let chainLinks = []
     let currentChainLink = chainLink
 
     console.log("Looping Initiated")
 
-    chainLinks.push(await GrabPokemonFromEvolution(currentChainLink))
+    console.log(currentChainLink)
+    
+    let fetchedPokemon = await GrabPokemonFromEvolution(currentChainLink, fetch)
+
+    if (fetchedPokemon != null){
+        chainLinks.push(fetchedPokemon)
+    }
 
     while (true)
     {
         if(currentChainLink.evolves_to.length != 0)
         {
             for(let index in currentChainLink.evolves_to)
-            {
-                console.log(index)
-                console.log(currentChainLink.evolves_to[index])
-                chainLinks.push(await GrabPokemonFromEvolution(currentChainLink.evolves_to[index]))
+            {   
+                let poke = await GrabPokemonFromEvolution(currentChainLink.evolves_to[index], fetch)
+                if(poke != null)
+                    chainLinks.push(poke)
             }
 
             currentChainLink = currentChainLink.evolves_to[0]
-                
         }
         else
         {
@@ -52,9 +59,26 @@ async function GetEvolutionTree(chainLink){
     return chainLinks
 }
 
+async function GrabPokemonFromEvolution(chainLink, fetch){
+    console.log(chainLink.species.name)
 
-async function GrabPokemonFromEvolution(chainLink){
-    return await fetchData('https://pokeapi.co/api/v2/pokemon/' + chainLink.species.name)
+    // Link looks like this "https://pokeapi.co/api/v2/pokemon-species/711/"
+    // So we need to remove the last / and grab the number
+    let id = chainLink.species.url.split("/")[6]
+    console.log("ID : " + id)
+
+    const response = await fetch('https://pokeapi.co/api/v2/pokemon/' + id, {
+        method: 'GET', // *GET, POST, PUT, DELETE, etc. 
+    });
+
+    let data = null;
+
+    // check for error
+    if (response.status == 200) {
+        data = await response.json(); // parses JSON response into native JavaScript objects
+    }
+
+    return data
 }
 
 /** @type {import('./$types').PageLoad} */
@@ -68,16 +92,23 @@ export async function load({ params, fetch }) {
     let fetches = ['https://pokeapi.co/api/v2/pokemon/'+ pokemon, 'https://pokeapi.co/api/v2/pokemon-species/'+ pokemon]
     let respones = []
 
-    // Run through each one, GET each
-    for(let index in fetches){
-        let url = fetches[index]
-        const data = await fetchData(url, fetch); // parses JSON response into native JavaScript objects
+    console.log("About to fetch POKEMON")
 
-        // Add respones
-        respones.push(data)
-    }
+    // Run through each one, GET each
+    let url = fetches[0]
+    const pokeFetch = await fetchData(url, fetch); // parses JSON response into native JavaScript objects
+
+    // Add respones
+    respones.push(pokeFetch)
+
+    let id = pokeFetch.species.url.split("/")[6]
+    const speciesFetch = await fetchData('https://pokeapi.co/api/v2/pokemon-species/' + id, fetch); // parses JSON response into native JavaScript objects
+    respones.push(speciesFetch)
+
+    console.log("Pokemon fetched")
 
     // Pokemon and pokemon-species fetched, now fetch the pokemon's abilities
+    console.log("About to fetch ABILITIES")
     let abilities = []
 
     for(let index in respones[0].abilities)
@@ -89,13 +120,17 @@ export async function load({ params, fetch }) {
 
         abilities.push(data)
     }
-
+    
     respones.push(abilities)
+    console.log("Abilities fetched")
 
+    console.log("About to fetch evolution chain")
+    
     // Now fetch the evolution chain of the pokemon, and each pokemon.
     let evoChain = await fetchData(respones[1].evolution_chain.url, fetch)
     console.log("Chain of evo")
     console.log(evoChain)
+    console.log("evolution chain fetched")
 
     /* Data structure :
     respones[3] -> .chain -> .species ==> the base evolution I.E baby
@@ -109,8 +144,15 @@ export async function load({ params, fetch }) {
     // [{name : string, sprites : array, types : array , id : number}]
     let evolutions = []
 
+    console.log("About to fetch evolution tree")
+
     // [poke1, poke2, poke3, ...], in correct evolution order
-    let evoTree = await GetEvolutionTree(evoChain.chain)
+    let evoTree = await GetEvolutionTree(evoChain.chain, fetch)
+
+    console.log("evolution tree fetched")
+
+    const allPokemon = await fetchData('https://pokeapi.co/api/v2/pokemon-species?limit=10000', fetch)
+    console.log(allPokemon)
 
     for(let index in evoTree){
         let pokeName = evoTree[index].name
@@ -122,7 +164,7 @@ export async function load({ params, fetch }) {
     }
 
     respones.push(evolutions)
-    
+
     console.log("Respones +")
     console.log(respones)
 

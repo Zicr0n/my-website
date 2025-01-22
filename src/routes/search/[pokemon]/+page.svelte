@@ -1,7 +1,20 @@
 <script>
+	import { afterNavigate } from '$app/navigation';
     import { base } from '$app/paths';
     import {search_store} from '$lib/user';
 	import { error } from '@sveltejs/kit';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+
+	afterNavigate(() => {
+		currentDisplayImage = null;
+		currentDisplayImage = currentDisplayImage
+
+		let article = document.getElementsByTagName("nav")[0]
+		article.scrollIntoView({behavior: "smooth"})
+	});
+
+	let search;
 
 	const pokemon_type_colours = {
 	normal: '#A8A77A',
@@ -32,6 +45,8 @@
 	$: if (resolvedPokemon) {
         onSearch(resolvedPokemon.response.name);
     }
+
+	let currentDisplayImage;
 
 	function onAbilityInfoPressed(tagName){
 		let ability = document.getElementsByName(tagName)
@@ -77,6 +92,10 @@
 		return " ";
     }
 
+	function onSpriteClicked(sprite){
+		currentDisplayImage = sprite
+	}
+
 </script>
 
 <!-- data.response looks like this : [pokemon, species, abilities, evolution_chain({name, sprites, types, id}] -->
@@ -85,8 +104,11 @@
 	<p>.. waiting</p>
 {:then dataList}
 	{onSearch(dataList.response[0].name, dataList.response[1].color.name)}
-
-	<h2>{dataList.response[0].name.toUpperCase()} <span id="id" style="font-size: 20px">#{String(dataList.response[0].id).padStart(4, '0')}</span></h2>
+	<div class="header">
+		<a href="{base}/search/{data.response[0].id > 1?data.response[0].id - 1:1025}"class="navButton">Previous <span id="id2">#{data.response[0].id > 1?data.response[0].id - 1:1025}</span></a>
+			<h2>{dataList.response[0].name.toUpperCase()} <span id="id" style="font-size: 20px">#{String(dataList.response[0].id).padStart(4, '0')}</span></h2>
+		<a href="{base}/search/{data.response[0].id < 1025?data.response[0].id + 1:1}"class="navButton">Next <span id="id2">#{data.response[0].id < 1025?data.response[0].id + 1:1}</span></a>
+	</div>
 
 	<article>
 		
@@ -94,14 +116,18 @@
 			<div id="sprite">
 				{#each Object.entries(dataList.response[0].sprites) as sprites}
 					{#if typeof sprites[1] == 'string' && sprites[0].includes("front_default")}
-						<img src={sprites[1]} alt="pokemon"/>
+						<img src={currentDisplayImage?currentDisplayImage:sprites[1]} alt="pokemon"/>
 					{/if}
 				{/each}
 			</div>
 
 			<div class="sprite-showcase">
 				{#each Object.entries(dataList.response[0].sprites) as sprites}
-					<img style="display: inline;" src={sprites[1]} alt=""> 
+					{#if typeof sprites[1] == 'string' }
+						<button on:click={onSpriteClicked(sprites[1])}>
+							<img style="width:128px" src={sprites[1]} alt=""> 
+						</button>
+					{/if}
 				{/each}
 			</div>
 		</div>
@@ -184,7 +210,6 @@
 			{/each}
 		</ul>
 	</div>
-
 {/await}
 
 <style>
@@ -195,6 +220,8 @@
 		height: fit-content;
 
 		margin-bottom: 100px;
+
+		min-width: 300px;
 	}
 	
 	@media (min-width: 1000px){
@@ -207,7 +234,6 @@
 			justify-content: center;
 			align-items: flex-start;
 		}
-
 	}
 
 	@media (max-width: 1000px){
@@ -235,15 +261,52 @@
 
 	h2{
 		font-size: xx-large;
-		margin: 20px;
+
 		font-family: 'ethnocentric';
 		color: black;
+		display: inline;
+		text-align: center;
+
+		margin: auto;
+
 	}
 
 	h3{
-		margin: 20px 0px 0px 0px;
 		font-family: 'ethnocentric';
 		font-size: x-large;
+		display: inline;
+
+		margin-top: 10px;
+		padding-top: 10px;
+	}
+
+	.header{
+		margin: 10px 0px;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+
+		padding: 10px;
+	}
+
+	.navButton{
+		display: inline;
+		text-align: center;
+
+		font-family: 'ethnocentric';
+
+		background-color: #ff0066;
+		color:white;
+		padding: 10px;
+		border-radius: 10px;
+
+		min-width: 100px;
+		max-width: 200px;
+	}
+
+	#id2{
+		color:black;
+		font-size: 12px;
 	}
 
 	.left{
@@ -251,7 +314,9 @@
 		justify-content: center;
 		flex-wrap: wrap;
 		align-items: flex-start;
-		margin: 10px;
+		margin: 0px 10px 10px 10px;
+
+		overflow: hidden;
 	}
 
 	#sprite{
@@ -266,12 +331,15 @@
 		box-shadow: 0px 2px 5px 2px darkgray;
 
 		background-image: url("/images/pattern.png");
+
+		overflow: hidden;
 	}
 	
 	#sprite img{
 		transition: all 200ms ease-out;
 		height: auto;
 		width: 100%;
+		background-size: cover;
 	}
 
 	#sprite img:hover{
@@ -281,11 +349,10 @@
 	.sprite-showcase{
 		width: 100%;
 
+		display: inline;
 		overflow-y: hidden;
 		overflow-x: scroll;
-
-		display: flex;
-		gap: 10px;
+		white-space: nowrap;
 
 		background-color: darkgray;
 
@@ -293,24 +360,36 @@
 
 		border-radius: 10px;
 		scroll-snap-type: x mandatory;
+		scroll-padding: 0;
 	}
 
-	.sprite-showcase img{
-		scroll-snap-align: center;
+	.sprite-showcase button{
+		display: inline;
+		scroll-snap-align:center;
 
 		image-rendering: pixelated;
 
 		transition: all 200ms ease-in-out;
+
+		width:100px;
 	}
 
-	.sprite-showcase img:hover{
+	.sprite-showcase button:hover{
 		transform: scale(1.3);
+	}
+
+	.sprite-showcase button:active{
+		transform: scale(0.8);
 	}
 
 	.right{
 		min-width: 50%;
 
-		margin: 10px;
+		padding: 0px 10px 0px 0px;
+
+		display: flex;
+		align-items: start;
+		flex-direction: column;
 	}
 
 	.stats{
@@ -367,6 +446,9 @@
 	.ability-button:hover{
 		scale: 1.1;
 	}
+	.ability-button{
+		transition: all 200ms ease-out;	
+	}
 
 	.ability-name{
 		color: white;
@@ -401,8 +483,7 @@
 
 	.evolutions_tab{
 		width: 100%;
-		border-radius: 20px;
-		margin: 10px;
+		border-radius: 10px;
 		height: 100%;
 		
 		background-image: url("/images/pattern.png");
@@ -410,11 +491,14 @@
 		image-rendering:crisp-edges;
 		background-color: rgb(109, 109, 109);
 
-		margin-bottom: 100px;
+		padding: 10px;
+
+
 	}
 
 	.evolutions_tab h2{
 		color: white;
+		
 	}
 
 	.evolutions_list{

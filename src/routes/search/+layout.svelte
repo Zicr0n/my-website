@@ -27,20 +27,8 @@
 <div class="backdrop"></div>
 
 <main>
-    <div class="head">
-        <a id="home" href="{base}/search">Home</a>
-         
-        <form on:submit|preventDefault={()=> goto(base + '/search/'+search)}>
-            <input type="text" placeholder="Sök upp en pokemon" bind:value={search} />
-        </form>
-                   
-
-    </div>
-
     <slot>
-        
     </slot>
-    
 </main>
 
 <footer>Recent Searches :
@@ -73,11 +61,10 @@
     }
 
     footer{
-        background-color: #ff0066;
-        color: rgb(218, 218, 218);
+        color: black;
 
         width: 100vw;
-        height: 50px;
+        height:100px;
 
         display: flex;
         align-items: center;
@@ -105,53 +92,6 @@
         z-index: -1;
         filter: blur(5px);
 
-    }
-
-    .head{
-        background-image: url("https://imageio.forbes.com/specials-images/imageserve/604202ff091b6539cb90fcbc/The-backs-of-a-number-of-Pok-mon-cards-/960x0.jpg?format=jpg&width=960");
-        background-size:cover;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        
-        gap: 8px;
-        width: 100%;
-        height: 60px;
-
-        background-color: gray;
-        padding: 8px 8px;
-
-        border-radius: 20px 20px 0px 0px;
-
-
-    }
-
-    #home{
-        width: 20%;
-        height: 100%;
-
-        background-color: aliceblue;
-        
-        border-radius: 4px;
-
-        text-align: center;
-        padding: 8px;
-
-        transition: all 200ms ease-out;
-    }
-
-    #home:hover{
-        background-color: darkgray;
-        transform: scale(1);
-    }
-
-    form{
-        flex-grow: 1;
-    }
-
-    input{
-        width: 100%;
-        border-radius: 4px
     }
 
     #prev_search{
