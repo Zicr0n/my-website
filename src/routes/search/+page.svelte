@@ -9,7 +9,7 @@
     function RandomPokemon()
     {
         let index = Math.floor(Math.random() * 1025) + 1;
-        goto( base + "search/"+ index)
+        goto( base + "/search/"+ index)
 
     }
 
