@@ -75,7 +75,6 @@
                 </div>     
             </form> 
 
-
             <div style="display: flex; align-items: center;">
                 <button class="navButton" on:click={search===""||search==null?alert("Sök efter en pokemon"):goto(base + '/search/'+ search)}>Sök</button>
                 <button class="navButton" on:click={RandomPokemon}>Överraska Mig!</button>

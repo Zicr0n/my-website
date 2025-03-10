@@ -16,6 +16,9 @@
 		<a href="{base}/chat" id="chat" style="">
 			<img src="{base}/images/chat.png" alt="chat" >
 		</a>
+		<a href="{base}/shop" id="shop" style="">
+			<img src="{base}/images/shoppingCartIcon.png" alt="chat" >
+		</a>
 	</div>
 </nav>
 
@@ -24,10 +27,19 @@
 			font-family: "ethnocentric";
 			src: url("/fonts/ethnocentric.otf");
 		}
+	
+	@font-face{
+		font-family: 'playfair';
+		src: url('/fonts/playfair.ttf') format('truetype');
+		font-weight: normal;
+		font-style: normal;
+		font-display: swap;
+	}
+	
+
 	:global(body), :global(html){
 		margin: 0%;
 		padding: 0%;
-		height: 100vh;
 		width: 100vw;
 		overflow-x: hidden;
 
@@ -102,7 +114,7 @@
 		transition: all 0.3s ease 0s;
 	}
 
-	.accountbutton:hover, #chat:hover, #search:active{
+	.accountbutton:hover, #chat:hover, #search:active, #shop:hover{
 		background-color: darkgray;
 		box-shadow: 0px 0px 5px black;
 		scale: 0.95;
@@ -158,6 +170,22 @@
 
 	#search:hover{
 		transform: scale(1.05);
+	}
+
+	#shop{
+		width: 50px; 
+		height: 50px; 
+
+		
+		margin: 0px 10px;
+		padding: 10px;
+		
+		border-radius: 50%; 
+
+		background-color: #ff0066; 
+		box-shadow: 2px 2px 0px #ac0045;
+
+		transition: all 200ms ease-in-out;
 	}
 </style>
 

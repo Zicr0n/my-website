@@ -133,6 +133,10 @@
         border-bottom-width: 4px;
     }
     main{
+        @font-face {
+            font-family: 'ethnocentric';
+            src: url();
+        }
         width: 30vw;
         height: 70vh;
 
