@@ -3,7 +3,7 @@
 	<a href="{base}/search"><img src="{base}/images/search.png" alt="pokemon search" id="search"></a>
 
 	<div class="centralTab">
-		<a href="{base}/">Home</a>
+		<a href="{base}">Home</a>
 		<a id="photo" href="{base}/photoapp">Photo App</a>
 		<a id="shoppinglist" href="{base}/shoppinglist">Shopping List</a>
 		<a href="{base}/memory" style="border-color : #1900FF; color: #1900FF;">Memory</a>
